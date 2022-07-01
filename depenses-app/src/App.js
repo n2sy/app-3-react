@@ -1,6 +1,7 @@
 import './App.css';
 import NewDepense from './components/NewDepense';
 import DepenseList from './components/DepenseList';
+import { useState } from 'react';
 
 const TabDepenses = [
   {
@@ -25,10 +26,19 @@ const TabDepenses = [
 
 function App() {
 
+  const [tabDep, setTabDep] = useState(TabDepenses);
+
+  function addDepenseFromList(newD) {
+    console.log(tabDep, newD);
+    setTabDep((prev) => {
+      return [newD, ...prev];
+    })
+  }
+
   return (
     <div>
-      <NewDepense></NewDepense>
-      <DepenseList listDep={TabDepenses}></DepenseList>
+      <NewDepense onAddNewDepense={addDepenseFromList}></NewDepense>
+      <DepenseList listDep={tabDep}></DepenseList>
 
     </div>
   );
