@@ -27,6 +27,7 @@ const TabDepenses = [
 function App() {
 
   const [tabDep, setTabDep] = useState(TabDepenses);
+  const [FiltredDep, setFiltredDep] = useState(TabDepenses);
 
   function addDepenseFromApp(newD) {
 
@@ -36,16 +37,16 @@ function App() {
   }
 
   function FilterDepenseList(selectedYear) {
-    setTabDep(() => {
-      let tabFiltred = TabDepenses.filter((d) => d.date_d.getFullYear().toString() == selectedYear);
-      return tabFiltred;
+    setFiltredDep(() => {
+      let newTabFiltred = tabDep.filter((d) => d.date_d.getFullYear().toString() == selectedYear);
+      return newTabFiltred;
     })
   }
 
   return (
     <div>
       <NewDepense onAddNewDepense={addDepenseFromApp}></NewDepense>
-      <Depenses filterDep={FilterDepenseList} listDep={tabDep}></Depenses>
+      <Depenses filterDep={FilterDepenseList} listDep={FiltredDep}></Depenses>
 
     </div>
   );
