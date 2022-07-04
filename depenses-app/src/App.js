@@ -1,7 +1,7 @@
 import './App.css';
 import NewDepense from './components/NewDepense';
-import DepenseList from './components/DepenseList';
 import { useState } from 'react';
+import Depenses from './components/Depenses';
 
 const TabDepenses = [
   {
@@ -35,10 +35,17 @@ function App() {
     })
   }
 
+  function FilterDepenseList(selectedYear) {
+    setTabDep(() => {
+      let tabFiltred = TabDepenses.filter((d) => d.date_d.getFullYear().toString() == selectedYear);
+      return tabFiltred;
+    })
+  }
+
   return (
     <div>
       <NewDepense onAddNewDepense={addDepenseFromApp}></NewDepense>
-      <DepenseList listDep={tabDep}></DepenseList>
+      <Depenses filterDep={FilterDepenseList} listDep={tabDep}></Depenses>
 
     </div>
   );
