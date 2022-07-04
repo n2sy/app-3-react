@@ -1,6 +1,6 @@
 import './App.css';
 import NewDepense from './components/NewDepense';
-import { useState } from 'react';
+import { useState, useId } from 'react';
 import Depenses from './components/Depenses';
 
 const TabDepenses = [
@@ -27,26 +27,27 @@ const TabDepenses = [
 function App() {
 
   const [tabDep, setTabDep] = useState(TabDepenses);
-  const [FiltredDep, setFiltredDep] = useState(TabDepenses);
+  // const [FiltredDep, setFiltredDep] = useState(TabDepenses);
 
   function addDepenseFromApp(newD) {
 
     setTabDep((prev) => {
+
       return [newD, ...prev];
     })
   }
 
-  function FilterDepenseList(selectedYear) {
-    setFiltredDep(() => {
-      let newTabFiltred = tabDep.filter((d) => d.date_d.getFullYear().toString() == selectedYear);
-      return newTabFiltred;
-    })
-  }
+  // function selYearHAndler(newYear) {
+  //   setSelectedYear(newYear);
+  //   console.log(selectedYear);
+  // }
+
+
 
   return (
     <div>
       <NewDepense onAddNewDepense={addDepenseFromApp}></NewDepense>
-      <Depenses filterDep={FilterDepenseList} listDep={FiltredDep}></Depenses>
+      <Depenses listDep={tabDep}></Depenses>
 
     </div>
   );
