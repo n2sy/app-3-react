@@ -15,7 +15,7 @@ function Depenses(props) {
 
     return (
         <div className='expenses'>
-            <FilterDepense allDep={props.listDep} selected={selectedYear} onChangeFilter={filterChangeHandler}></FilterDepense>
+            <FilterDepense selected={selectedYear} onChangeFilter={filterChangeHandler}></FilterDepense>
             <DepenseList listDep={FilterDepenseList}></DepenseList>
         </div>
     )
