@@ -28,8 +28,8 @@ function App() {
 
   const [tabDep, setTabDep] = useState(TabDepenses);
 
-  function addDepenseFromList(newD) {
-    console.log(tabDep, newD);
+  function addDepenseFromApp(newD) {
+
     setTabDep((prev) => {
       return [newD, ...prev];
     })
@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div>
-      <NewDepense onAddNewDepense={addDepenseFromList}></NewDepense>
+      <NewDepense onAddNewDepense={addDepenseFromApp}></NewDepense>
       <DepenseList listDep={tabDep}></DepenseList>
 
     </div>
