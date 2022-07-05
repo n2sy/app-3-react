@@ -2,6 +2,7 @@ import './Depenses.css'
 import FilterDepense from './FilterDepense';
 import DepenseList from './DepenseList';
 import { useState } from 'react';
+import DepenseChart from './DepenseChart';
 
 function Depenses(props) {
 
@@ -15,7 +16,8 @@ function Depenses(props) {
 
     return (
         <div className='expenses'>
-            <FilterDepense selected={selectedYear} onChangeFilter={filterChangeHandler}></FilterDepense>
+            <FilterDepense allDep={props.listDep} selected={selectedYear} onChangeFilter={filterChangeHandler}></FilterDepense>
+            <DepenseChart listDep={FilterDepenseList}></DepenseChart>
             <DepenseList listDep={FilterDepenseList}></DepenseList>
         </div>
     )
